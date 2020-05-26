@@ -3,4 +3,6 @@ description: 'This action will send a notification to Slack for CI/CD'
 author: 'maxwellhealth'
 runs:
   using: 'docker'
-  image: 'docker://maxwellhealth/action-slack-reporter'
+  image: 'Dockerfile'
+  env:
+    GO111MODULE: 'on'
