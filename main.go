@@ -44,7 +44,7 @@ func main() {
 
 	fields := []slack.AttachmentField{
 		{
-			Value: fmt.Sprintf("*Ref* - %v  *Event* - %v  <https://github.com/"+os.Getenv("GITHUB_REPOSITORY")+"/commit/"+os.Getenv("GITHUB_SHA")+"/checks\"|Details>", ref, eventName),
+			Value: fmt.Sprintf("*Repo*: "+envGithubRepo+" *Ref*: %v %v  <https://github.com/"+envGithubRepo+"/commit/"+os.Getenv("GITHUB_SHA")+"/checks\"|Details>", ref, eventName),
 			Short: false,
 		},
 
