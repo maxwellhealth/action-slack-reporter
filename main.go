@@ -32,6 +32,7 @@ func main() {
 	actor := getEnvOrDefault(envGithubActor, "")
 	ref := getEnvOrDefault(envGithubRef, "")
 	eventName := getEnvOrDefault(envGithubEventName, "")
+	repoName := getEnvOrDefault(envGithubRepo, "")
 	if len(endpoint) == 0 {
 		fmt.Printf("%v must be defined \n", envSlackWebhook)
 		os.Exit(1)
@@ -44,7 +45,7 @@ func main() {
 
 	fields := []slack.AttachmentField{
 		{
-			Value: fmt.Sprintf("*Repo*: "+envGithubRepo+" *Ref*: %v %v  <https://github.com/"+envGithubRepo+"/commit/"+os.Getenv("GITHUB_SHA")+"/checks\"|Details>", ref, eventName),
+			Value: fmt.Sprintf("*Repo*: "+repoName+" *Ref*: %v %v  <https://github.com/"+repoName+"/commit/"+os.Getenv("GITHUB_SHA")+"/checks\"|Details>", ref, eventName),
 			Short: false,
 		},
 
