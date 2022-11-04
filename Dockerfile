@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine3.11 as builder
+FROM golang:1.19-alpine3.11 as builder
 
 ENV CGO_ENABLED=1
 RUN apk --no-cache add git ca-certificates wget openssh alpine-sdk build-base gcc zlib-dev
