@@ -10,7 +10,7 @@ RUN go build   -o /go/bin/slack-reporter .
 
 
 
-FROM alpine:3.11
+FROM alpine:3.16
 
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /go/bin/slack-reporter /usr/bin/slack-reporter
