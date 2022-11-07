@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine3.11 as builder
+FROM golang:1.19-alpine3.15 as builder
 
 ENV CGO_ENABLED=1
 RUN apk --no-cache add git ca-certificates wget openssh alpine-sdk build-base gcc zlib-dev
@@ -10,7 +10,7 @@ RUN go build   -o /go/bin/slack-reporter .
 
 
 
-FROM alpine:3.11
+FROM alpine:3.16
 
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /go/bin/slack-reporter /usr/bin/slack-reporter
