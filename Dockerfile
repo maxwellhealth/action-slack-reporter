@@ -1,12 +1,13 @@
-FROM golang:1.19-alpine3.15 as builder
-
+FROM golang:1.19-alpine3.16 as builder
 ENV CGO_ENABLED=1
+
 RUN apk --no-cache add git ca-certificates wget openssh alpine-sdk build-base gcc zlib-dev
+
 WORKDIR ${GOPATH}/src/github.com/maxwellhealth/action-slack-reporter
-COPY main.go ${GOPATH}/src/github.com/maxwellhealth/action-slack-reporter
-ENV GOOS linux
-RUN go get -v ./...
-RUN go build   -o /go/bin/slack-reporter .
+
+COPY . .
+
+RUN go build -o /go/bin/slack-reporter main.go
 
 
 
